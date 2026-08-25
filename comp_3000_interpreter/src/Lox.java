@@ -5,6 +5,7 @@
 // }
 
 // package com.craftinginterpreters.lox;
+// package lox;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -16,6 +17,8 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Lox {
+  static boolean hadError = false;
+
   public static void main(String[] args) throws IOException {
     if (args.length > 1) {
       System.out.println("Usage: jlox [script]");
@@ -31,6 +34,7 @@ public class Lox {
   private static void runFile(String path) throws IOException {
     byte[] bytes = Files.readAllBytes(Paths.get(path));
     run(new String(bytes, Charset.defaultCharset()));
+    if (hadError) System.exit(65);
   }
 
 
@@ -44,6 +48,8 @@ public class Lox {
       if (line == null) break;
       run(line);
     }
+
+    hadError = false;
   }
 
 
