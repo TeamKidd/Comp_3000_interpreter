@@ -34,21 +34,21 @@ river_name{
 } -->
 
 literals are going to be:
-river1 = {F: 1, R: .5}
-river2 = {F: .5, R: .25}
+river1 = {{F: 1, R: .5}}
+river2 = {{F: .5, R: .25}}
 
 Where:
-F is flow
-R is Rainfall
+F is flow. Constant = value, varying = [] array
+R is Rainfall. Constant = value, varying = [] array
 
 river3 = river1 & river2
 We add flow, set R to 0
 
 add R using:
-river3{R: .5}
+river3{{R: .5}}
 
 access values using:
-river3{R}
+river3{{R}}
 
 global functions to
 process step
