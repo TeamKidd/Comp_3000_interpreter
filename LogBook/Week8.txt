@@ -1,0 +1,12 @@
+Tuesday, 15 September
+
+Couldn't attend class this week as I was sick but I heard from my team mates from the whats app group we have that there was presentations. I read through and it wasn't much in my opinion.
+Other than that I just have to finish up my assignment work and I'm good. I've attended all other classes so I'm not too far behind just have to finish up. I just wish class was more assignment based or something like that because I could have focused more on it. In my opinion I could have just done it all at home.
+
+
+I'm pasting their message here:
+15/09
+Two presentations:
+The first presentation was mostly theory of implementation and mirrors concepts taught in the unit thus far but the concrete thing I noticed was the use of arrays to store days of rain and the use of a ‘delay’ mechanic to emulate downstream flow taking time, ie: delay(riverA, 1) would induce a 1 day delay to the river downstream flowrate.
+
+The second presentation compared the river system design paradigm to that of circuitry design, comparing, say resistance to blockages or bottlenecks in the river, ‘efficiency’ - to include consideration about evaporation/miscellaneous water loss, and wattage to name the output water of the river system. Additionally, the design points out that ‘river bifurcation’ (river splits) are very rare in real life and end up merging together anyway, so their design does not consider them.

@@ -1,0 +1,111 @@
+Tuesday, 11 August
+
+This week was a bit interesting and weird.
+We used lox to write turtle programs for us and we limited turtle commands to make it more challenging and make sense.
+
+Here were a few of mine:
+
+-- star.lox
+print "clearscreen";
+print "pd";
+for(var i = 0; i < 5; i = i + 1){
+    for(var j = 0; j < 20; j = j + 1){
+        print "pd";
+        print "fd 5";
+        print "pu";
+        print "fd 5";
+    }
+    print "pd";
+    print "rt 145";
+}
+
+
+--- turtle.lox
+var max_turns = 30;
+
+print "clearscreen";
+print "pd";
+for (var k = 0; k < 6; k = k + 1){
+    for (var j = 0; j < 8; j = j + 1){
+        for (var i = 0; i < 25; i = i + 1) {
+            print "fd 100";
+            print "rt 180";
+            print "pu";
+            print "fd 50";
+            print "rt 10";
+            print "pd";
+            for(var j = 0; j < 20; j = j + 1){
+                print "pd";
+                print "fd 5";
+                print "pu";
+                print "fd 5";
+                print "pd";
+            }
+        }
+        print "pu";
+        print "fd 20";
+        print "rt 5";
+        print "pd";
+        for (var l = k; l < j; l = l + 1){
+            print "fd 5";
+            print "rt -5";
+        }
+    }
+    print "fd 150";
+    for (var j = 0; j < 10; j = j + 1){
+        for (var i = 0; i < 15; i = i + 1) {
+            print "fd 100";
+            print "rt 120";
+            print "pu";
+            print "fd 300";
+            print "rt 2";
+            print "pd";
+        }
+        print "pu";
+        print "fd 20";
+        print "rt 5";
+        print "pd";
+        for (var l = k; l < j; l = l + 1){
+            print "fd 3";
+            print "rt -9";
+            for(var j = 0; j < 20; j = j + 1){
+                print "pd";
+                print "fd 5";
+                print "pu";
+                print "fd 5";
+                print "pd";
+            }
+        }
+    }
+    
+}
+
+
+---squares.lox
+var number_squares = 100;
+
+print "clearscreen";
+
+fun draw_line(size){
+    for(var j = 0; j < size; j = j + 1){
+        print "fd 1";
+    }
+}
+
+
+fun create_square(size){
+    draw_line(size);
+    print "rt 90";
+    draw_line(size);
+    print "rt 90";
+    draw_line(size);
+    print "rt 90";
+    draw_line(size);
+    print "rt 90";
+}
+
+for (var i = 0; i < number_squares; i = i + 1){
+    create_square(i);
+    draw_line(i);
+    print "rt 15";
+}

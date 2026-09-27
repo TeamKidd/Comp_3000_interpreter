@@ -1,0 +1,5 @@
+Tuesday, 1 September
+
+Talked more about Nystrom’s Notation and AST and literal
+Was working more on my code again with the book. We made a github where someone put there base code which I had also done from my end following the book. I had worked and pushed my updates until the end of class.
+More thinking about what my language would be like. I thought more about what ideas I had in week 5. But mainly just programming today ( following along the book and making progress).

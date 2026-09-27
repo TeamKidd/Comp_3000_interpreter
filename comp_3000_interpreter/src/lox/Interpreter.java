@@ -17,6 +17,10 @@ public class Interpreter implements Expr.Visitor<Object> {
         return expr.value;
     }
 
+    @Override
+    public Object visitFlowLiteralExpr(Expr.FlowLiteral expr) {
+        return expr;
+    }
 
     @Override
     public Object visitUnaryExpr(Expr.Unary expr) {

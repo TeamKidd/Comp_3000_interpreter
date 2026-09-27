@@ -1,0 +1,11 @@
+Tuesday, 8 September
+
+This is the last week where we talk about Assignment One Topics. Finished parser by this point and worked on expressions.
+I have a solid idea of what I want for my language to be now around this time and I'm just working on the book but I'm beginning to add bits of my language too.
+Mostly solo work. Team just work on their own and I don't mind that. I want my language to be flexible as possible with all kinds of features to make it intuitive.
+I've decided on what literal i want.
+{{F:25, R:52}}
+Since I use identifiers inside {{}} I can use whatever I want and come up with different ones which do different thigns and are more readable than symbols in my opinion. If i want I can also combine both
+{{F:[2,5,1], R:[2,5,0,1]}}
+I like this one.
+I'm using a map in this case because it best represents it.

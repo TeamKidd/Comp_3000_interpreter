@@ -1,0 +1,25 @@
+Tuesday, 4 August
+
+Started the same as last week with iRat and tRat.
+This week we did regex. I made a few cool ones.
+
+Here are some I made:
+https://regexr.com/8npmc
+regex:
+([0-9])+\s*\w*\s*\w*
+yellow
+e{2,}
+black|yellow
+(?:(?:B|b)arry):\s\w*
+regexr.com/8npmc
+(?:\w*)*:\s\w*
+
+
+https://regexr.com/8npmr
+javascript
+variables: .let\s*.*
+for loop: for\s*\((.*?\s)*?\}
+conditional: if\s*\((.*?\s)*?\}
+function: function\s*(.*?\s)*?\}
+
+
