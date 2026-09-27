@@ -1,5 +1,7 @@
 package lox;
 
+import java.util.Map;
+
 class AstPrinter implements Expr.Visitor<String> {
     String print(Expr expr) {
         return expr.accept(this);
@@ -20,7 +22,27 @@ class AstPrinter implements Expr.Visitor<String> {
     @Override
     public String visitLiteralExpr(Expr.Literal expr) {
         if (expr.value == null) return "nil";
-        return expr.value.toString();
+        if (expr.value instanceof Map) {
+        Map<?, ?> fields = (Map<?, ?>) expr.value;
+
+        StringBuilder result = new StringBuilder("{");
+
+        for (Map.Entry<?, ?> field : fields.entrySet()) {
+            result.append(field.getKey())
+                  .append(": ")
+                  .append(print((Expr) field.getValue()))
+                  .append(", ");
+        }
+
+        if (!fields.isEmpty()) {
+            result.setLength(result.length() - 2);
+        }
+
+        result.append("}");
+        return result.toString();
+    }
+
+    return expr.value.toString();
     }
 
     @Override
@@ -53,5 +75,10 @@ class AstPrinter implements Expr.Visitor<String> {
             new Expr.Literal(45.67)));
 
     System.out.println(new AstPrinter().print(expression));
+    }
+
+    @Override
+    public String visitFlowLiteralExpr(Expr.FlowLiteral expr) {
+        return expr.fields.toString();
     }
 }

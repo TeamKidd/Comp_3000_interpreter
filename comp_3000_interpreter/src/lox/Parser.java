@@ -1,7 +1,8 @@
 package lox;
 
+import java.util.HashMap;
 import java.util.List;
-
+import java.util.Map;
 import static lox.TokenType.*;
 
 class Parser {
@@ -25,9 +26,32 @@ class Parser {
 
 
     private Expr expression() {
-        return equality();
+        return riverConnection();
     }
 
+    private Expr riverCombination() {
+        Expr expr = equality();
+
+        while (match(AMPERSAND)) {
+            Token operator = previous();
+            Expr right = equality();
+            expr = new Expr.Binary(expr, operator, right);
+        }
+
+        return expr;
+    }
+
+    private Expr riverConnection() {
+        Expr expr = riverCombination();
+
+        while (match(ARROW)) {
+            Token operator = previous();
+            Expr right = riverCombination();
+            expr = new Expr.Binary(expr, operator, right);
+        }
+
+        return expr;
+    }
 
     private Expr equality() {
         Expr expr = comparison();
@@ -140,10 +164,18 @@ class Parser {
             return new Expr.Literal(previous().literal);
         }
 
+        if (match(IDENTIFIER)) {
+            return new Expr.Literal(previous().lexeme);
+        }
+
         if (match(LEFT_PAREN)) {
             Expr expr = expression();
             consume(RIGHT_PAREN, "Expect ')' after expression.");
             return new Expr.Grouping(expr);
+        }
+
+        if (match(FLOW_START)) {
+            return flowLiteral();
         }
 
         throw error(peek(), "Expect expression.");
@@ -184,5 +216,21 @@ class Parser {
 
             advance();
         }
+    }
+
+    private Expr flowLiteral() {
+        Map<String, Expr> fields = new HashMap<>();
+
+        do {
+            Token name = consume(IDENTIFIER, "Expected field name.");
+            consume(COLON, "Expected ':' after field name.");
+
+            Expr value = expression();
+            fields.put(name.lexeme, value);
+        } while (match(COMMA));
+
+        consume(FLOW_END, "Expected '}}' after flow literal.");
+
+        return new Expr.Literal(fields);
     }
 }

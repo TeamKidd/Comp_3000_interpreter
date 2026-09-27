@@ -16,7 +16,9 @@ public class GenerateAst {
             "Binary   : Expr left, Token operator, Expr right",
             "Grouping : Expr expression",
             "Literal  : Object value",
-            "Unary    : Token operator, Expr right"
+            "Unary    : Token operator, Expr right",
+            "FlowLiteral : Object value"
+            // "FlowLiteral : Map<String, Expr> fields"
         ));
     }
 
@@ -25,7 +27,7 @@ public class GenerateAst {
         String path = outputDir + "/" + baseName + ".java";
         PrintWriter writer = new PrintWriter(path, "UTF-8");
 
-        writer.println("package com.craftinginterpreters.lox;");
+        writer.println("package lox;");
         writer.println();
         writer.println("import java.util.List;");
         writer.println();

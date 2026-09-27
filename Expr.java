@@ -1,6 +1,6 @@
 package lox;
 
-import java.util.Map;
+import java.util.List;
 
 abstract class Expr {
   interface Visitor<R> {
@@ -65,8 +65,8 @@ abstract class Expr {
     final Expr right;
   }
   static class FlowLiteral extends Expr {
-    FlowLiteral(Map<String, Expr> fields) {
-      this.fields = fields;
+    FlowLiteral(Object value) {
+      this.value = value;
     }
 
     @Override
@@ -74,7 +74,7 @@ abstract class Expr {
       return visitor.visitFlowLiteralExpr(this);
     }
 
-    final Map<String, Expr> fields;
+    final Object value;
   }
 
   abstract <R> R accept(Visitor<R> visitor);

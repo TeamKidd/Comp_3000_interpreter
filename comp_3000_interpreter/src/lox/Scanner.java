@@ -5,8 +5,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-// import static com.craftinginterpreters.lox.TokenType.*; 
 import static lox.TokenType.*;
 // import static TokenType;
 // import TokenType;
@@ -63,14 +61,33 @@ class Scanner {
             case '(': addToken(LEFT_PAREN); break;
             case ')': addToken(RIGHT_PAREN); break;
             case '{':
-                addToken(LEFT_BRACE); break;
-            case '}': addToken(RIGHT_BRACE); break;
+                if (match('{')) {
+                    addToken(FLOW_START);
+                } else {
+                    addToken(LEFT_BRACE);
+                }
+                break;
+            case '}':
+                if (match('}')) {
+                    addToken(FLOW_END);
+                } else {
+                    addToken(RIGHT_BRACE);
+                }
+                break;
             case ',': addToken(COMMA); break;
             case '.': addToken(DOT); break;
-            case '-': addToken(MINUS); break;
+            case '-':
+                if (match('>')) {
+                    addToken(ARROW);
+                } else {
+                    addToken(MINUS);
+                } 
+                break;
             case '+': addToken(PLUS); break;
             case ';': addToken(SEMICOLON); break;
             case '*': addToken(STAR); break;
+            case ':': addToken(COLON); break;
+            case '&': addToken(AMPERSAND); break;
             case '!':
                 addToken(match('=') ? BANG_EQUAL : BANG);
                 break;
