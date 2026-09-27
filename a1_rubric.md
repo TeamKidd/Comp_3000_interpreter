@@ -27,6 +27,8 @@ javac ./lox/*.java
 then while in the src folder, run:
 java lox.Lox
 
+in this case the working folder is comp_3000_interpreter/src/
+
 3. What literal in your language represents a river that gets 10L/s of flow on the first day after 1mm of rainfall?
 
 ### Your answer
@@ -43,6 +45,8 @@ river1 & river2
 The & symbol shows two rivers combining.
 It is binary
 AST: (& river1 river2)
+
+the -> operator shows one river flowing into another.
 
 5. Does your language include statements, or is it an expression language?
 
@@ -155,26 +159,16 @@ Which chapter of the book is your parser based on?  What did you add beyond the 
 My work is based on Chapter 4 to Chapter 6 for Assignment/ Submission One. It contains abit of Chapter 7 as we have worked on it in class before the semester break. But it is not activated and only the parser is being used alonside AST Printer.
 My Logbooks explain my thought process and working throughout the week. I implemented almost all of the code and most of the ideas myself.
 The code in the src folder explains my workings as the code directly shows what is different from the code in Lox Interpreters book.
+
 After Chapter 6 I modifier the TokenType, parser, scanner, ast printer and expr java files.
-
-The scanner now handles new token types: FLOW_START, FLOW_END, ARROW, AMPERSAND to be used for my literal
-The parser handles the new tokens and creates the new literal and handles it. I use a map for the fields in the literal
-The ast printer has been modified to pretty print the map which couldn't handle map fields for my flow literal before now it prints it properly
-
-My parser is primarily based on Chapters 4 to 6 of Crafting Interpreters. I worked through the earlier chapters as part of developing the interpreter, and Chapter 6 provided the main starting point for the parser used in Submission One. Some Chapter 7 code is also present from work done in class, but it is not being used for the Submission One parser.
-
-I made changes to several parts of the Lox codebase, including TokenType, the scanner, parser, Expr, and AstPrinter.
-
 The scanner was extended to recognise the new tokens used by my river language, including FLOW_START, FLOW_END, COLON, AMPERSAND, and ARROW.
 
-The parser was extended with new parsing rules for my river language. I added flowLiteral() to parse flow literals in the form:
-
+The parser was extended with new parsing rules for my river language. I use a map for the fields in the literal. I added flowLiteral() to parse flow literals in the form:
 {{IDENTIFIER : EXPRESSION}}
-
 I also added parsing for the & operator to represent combining rivers and the -> operator to represent connecting one river expression to another. Parentheses can also be used to group river expressions.
-
 For the flow literal, I use a Map<String, Expr> to store the named fields, such as F for flow and R for rainfall.
 
+The ast printer has been modified to pretty print the map which couldn't handle map fields for my flow literal before now it prints it properly
 I also modified Expr and AstPrinter to support the additional expression type and to print the flow literal fields correctly. The AST output is used in my examples to demonstrate that the parser is reading the new river expressions correctly.
 
 My logbooks contain my development process and explain my ideas and work throughout the assignment. The source code in the src folder also shows the changes I made to the original Lox codebase.
@@ -186,26 +180,18 @@ What did you do beyond the in-class work?  Point your marker to where it lives i
 ### Your answer
 
 Planned and finished the parser ( including group github base book parser ). Suggested ideas and plans for language.
-Decided to use map for my literal fields
-{{IDENTIFIER : EXPRESSION}}
-since it best represents it.
-
 I designed my own syntax for representing river flow information rather than using the exact syntax from the assignment's example.
 
 My main design choice was to create a flow literal using named fields:
-
 {{IDENTIFIER : EXPRESSION}}
-
 For example:
-
 {{F: 10, R: 1}}
+In my language F represents flow and R is rainfall on first day. I can add identifiers for any and all purposes in this format and it's more readable and intuitive for me than symbols.
+
 
 This allows the literal to represent different properties using readable field names. I use a Map to store these fields.
-
 I also designed the & operator to represent two rivers combining and the -> operator to represent a connection between river expressions. These operators can be combined and grouped using parentheses, allowing expressions such as:
-
 ({{F: 5, R: 1}} & {{F: 50, R: 1}}) -> {{F: 80}}
 
 I implemented these language features in the scanner, parser, expression classes and AST printer, and tested them using my example programs and their AST output.
-
 My logbooks also document my ideas and development throughout the assignment.
