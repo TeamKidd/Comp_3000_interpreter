@@ -1,7 +1,9 @@
 package lox;
 
 import java.util.Map;
-
+// "FlowLiteral : Object value",
+        //     "Unary    : Token operator, Expr right",
+        //     "Variable : Token name"
 abstract class Expr {
   interface Visitor<R> {
     R visitBinaryExpr(Binary expr);
